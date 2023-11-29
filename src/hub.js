@@ -24,8 +24,8 @@ const template = `
         }
     </style>
 </head>
-<body>
-    <h1><a href="https://bytebitter.com">Woop</a> Document</h1>
+<body>  
+    <h1><a href="https://bytebitter.com">Woop</a> Document, more on <a href="https://github.com/drinking/woop">Github</a></h1>
     <table>
         <tr>
             <th>Function</th>
