@@ -1,0 +1,51 @@
+{
+  "name": "Woop",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "node ./codeGenerator.js && vue-cli-service serve",
+    "build": "node ./codeGenerator.js && vue-cli-service build",
+    "lint": "node ./codeGenerator.js && vue-cli-service lint",
+    "pritter": "npx prettier . --write"
+  },
+  "dependencies": {
+    "ant-design-vue": "^1.7.8",
+    "core-js": "^3.6.5",
+    "mustache": "^4.2.0",
+    "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~5.0.4",
+    "@vue/cli-plugin-eslint": "~5.0.4",
+    "@vue/cli-service": "~5.0.4",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.5.0",
+    "eslint-plugin-vue": "^9.1.0",
+    "js-beautify": "^1.14.11",
+    "prettier": "3.1.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "no-mixed-spaces-and-tabs": 0,
+      "no-unused-vars": "off",
+      "no-redeclare": "off"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

@@ -1,0 +1,30 @@
+name: deployment
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        description: 'The service to deploy'
+        required: true
+        default: 'woop'
+        type: choice
+        options:
+        - woop
+jobs:
+  woop:
+    if : ${{ github.event.inputs.app == 'woop' }}
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: |
+          docker network create --driver bridge my-network || true
+          cd woop
+          docker build -t woop .
+          containers=$(docker ps -q --filter "ancestor=woop")
+          if [[ -n "$containers" ]]; then
+            docker stop $containers
+            docker rm $(docker ps -a --filter "ancestor=woop" -q)
+          fi
+          docker run -d -p 80:80 --name woop --network my-network woop
+
