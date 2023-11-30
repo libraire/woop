@@ -14,18 +14,60 @@ const template = `
 <head>
     <title>Woop Document</title>
     <style>
-        table {
-            border-collapse: collapse;
-        }
+    table {
+      border-collapse: collapse;
+  }
 
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
+  th, td {
+      border: 1px solid black;
+      padding: 8px;
+  }
+  
+  a.no-link {
+     text-decoration: none; /* Removes underline */
+      color: #2b2b2b;
+  }
+
+  a.no-link:hover {
+      color: #b50a0a;
+  }
+
+  div.title {
+      font-size: 40px;
+      font-weight: bolder;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+  }
+
+  div.sub-title {
+      font-size: 20px;
+      font-weight: bolder;
+      display: inline;
+      align-self: flex-end;
+  }
+
+  div.container {
+      padding-bottom: 60px;
+  }
+
+  body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
     </style>
 </head>
 <body>  
-    <h1><a href="https://bytebitter.com">Woop</a> Document, more on <a href="https://github.com/drinking/woop">Github</a></h1>
+<div class="container">
+<div class="title">
+    <a href="https://bytebitter.com" class="no-link">Woop Document </a>
+    <div class="sub-title">
+        <a href="https://github.com/libraire/woop" class="no-link">@Github</a> <a href="https://github.com/sponsors/libraire" class="no-link">@Sponsor</a>
+    </div>
+    
+</div>
     <table>
         <tr>
             <th>Function</th>
@@ -39,6 +81,7 @@ const template = `
         </tr>
         {{/list}}
     </table>
+    </div>
 </body>
 </html>
 
