@@ -12,7 +12,7 @@ on:
 jobs:
   woop:
     if : ${{ github.event.inputs.app == 'woop' }}
-    runs-on: self-hosted
+    runs-on: woop
     steps:
       - uses: actions/checkout@v4
         with:
