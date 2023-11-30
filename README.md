@@ -6,7 +6,7 @@ on other platforms.
 So Woop appeared. It helps to process text and expects to cover common usage scenarios.
 Text looks like stream flowing from one function to another and becomes a final output.
 
-More to see [wiki](https://github.com/drinking/woop/wiki).
+Usage view [document](https://bytebitter.com/doc.html).
 
 ## Project setup
 
