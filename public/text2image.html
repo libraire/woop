@@ -56,6 +56,26 @@
       margin: 40px 0;
     }
 
+    .theme-panel {
+      width: 50px;
+      padding: 10px;
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .theme-panel label {
+      margin-right: 10px;
+    }
+
+    .theme-container {
+      display: flex;
+      width: 100%;
+      align-content: center;
+      justify-content: end;
+    }
+
   </style>
   <script>
     function generateNoteImage() {
@@ -77,14 +97,34 @@
       link.click();
     }
 
-      document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
         var inputText = document.getElementById("inputText");
         inputText.addEventListener('input', generateNoteImage);
 
         var imgElement = document.getElementById("noteImage");
         imgElement.addEventListener('click', downloadImage);
+
+
+        var backgroundColorInput = document.getElementById('backgroundColor');
+        var textColorInput = document.getElementById('textColor');
+        var contentElement = document.getElementById('note');
+
+        backgroundColorInput.addEventListener('change', function() {
+          var backgroundColor = backgroundColorInput.value;
+          contentElement.style.backgroundColor = backgroundColor;
+        });
+
+        textColorInput.addEventListener('change', function() {
+          var textColor = textColorInput.value;
+          contentElement.style.color = textColor;
+        });
+
+        generateNoteImage()
     });
+
+    
   </script>
+  
 </head>
 <body>
 
@@ -92,20 +132,20 @@
   <h1 class="text"> Note Image Generator</h1>
 
   <div class="container">
-
     <textarea id="inputText" placeholder="text to render."></textarea>
-    <div class="text"> = html => </div>
+    <div class="text"> = </div>
+    <div class="theme-panel">
+      <label for="backgroundColor">Color:</label>
+      <input type="color" id="backgroundColor" value="#1e1e1e">
+      <br>
+      <label for="textColor">Text:</label>
+      <input type="color" id="textColor" value="#ffffff">
+    </div>
+    <div class="text"> => </div>
     <div class="note" id="note"> </div>
-    <div class="text"> = image => </div>
+    <div class="text"> = download => </div>
     <img class="noteImage" id="noteImage" alt="Note Image">
   </div>
-  
-
-
-  
-  <br>
-  
-  <br>
   
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </body>
