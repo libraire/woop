@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Note Image Generator</title>
+  <style>
+
+    body {
+      background-color: black;
+      padding: 0 5%;
+    }
+  
+    .note {
+      background-color: #ffffff;
+      padding: 20px;
+      height: 100%;
+      aspect-ratio: 3/4;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-weight: 100;
+      box-sizing: border-box;
+    }
+
+    .noteImage {
+      width: 300px;
+      height: 400px; 
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 400px;
+      justify-content: center;
+    }
+
+    #inputText {
+      padding: 20px;
+      border: none;
+      resize: none;
+      height: 100%;
+      aspect-ratio: 3/4;
+      box-sizing: border-box;
+    }
+
+    .text {
+      color: #ffffff;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      text-align: center;
+      padding: 0 10px;
+    }
+
+    h1 {
+      margin: 40px 0;
+    }
+
+  </style>
+  <script>
+    function generateNoteImage() {
+      var inputText = document.getElementById("inputText").value;
+      var noteElement = document.getElementById("note");
+      noteElement.innerText = inputText;
+      html2canvas(noteElement).then(function(canvas) {
+        var imgData = canvas.toDataURL("image/png");
+        var imgElement = document.getElementById("noteImage");
+        imgElement.src = imgData;
+      });
+    }
+
+    function downloadImage() {
+      var imgElement = document.getElementById("noteImage");
+      var link = document.createElement('a');
+      link.href = imgElement.src;
+      link.download = 'note_image.png';
+      link.click();
+    }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var inputText = document.getElementById("inputText");
+        inputText.addEventListener('input', generateNoteImage);
+
+        var imgElement = document.getElementById("noteImage");
+        imgElement.addEventListener('click', downloadImage);
+    });
+  </script>
+</head>
+<body>
+
+  
+  <h1 class="text"> Note Image Generator</h1>
+
+  <div class="container">
+
+    <textarea id="inputText" placeholder="text to render."></textarea>
+    <div class="text"> = html => </div>
+    <div class="note" id="note"> </div>
+    <div class="text"> = image => </div>
+    <img class="noteImage" id="noteImage" alt="Note Image">
+  </div>
+  
+
+
+  
+  <br>
+  
+  <br>
+  
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</body>
+</html>
