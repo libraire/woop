@@ -19,6 +19,7 @@ jobs:
           fetch-depth: 0
       - run: |
           docker network create --driver bridge my-network || true
+          docker image prune -f
           docker build -t woop .
           containers=$(docker ps -q --filter "ancestor=woop")
           if [[ -n "$containers" ]]; then
