@@ -23,7 +23,7 @@ jobs:
           containers=$(docker ps -q --filter "ancestor=woop")
           if [[ -n "$containers" ]]; then
             docker stop $containers
-            docker rm $(docker ps -a --filter "ancestor=woop" -q)
+            docker rm $containers
           fi
           docker run -d -p 80:80 --name woop --network my-network woop
 
