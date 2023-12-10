@@ -8,6 +8,11 @@ function write(text) {
     if(text == undefined || text.length < 10) {
         return "Text at least 10 characters";
     }
+
+    if (text.length > 20000) {
+        return "Text must be less than 20000 characters";
+    }
+
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "/api/woop/write", false);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
