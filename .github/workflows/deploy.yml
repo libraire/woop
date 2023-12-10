@@ -9,6 +9,7 @@ on:
         type: choice
         options:
         - woop
+        - html 
 jobs:
   woop:
     if : ${{ github.event.inputs.app == 'woop' }}
@@ -26,4 +27,16 @@ jobs:
             docker rm $(docker ps -a --filter "ancestor=woop" -q)
           fi
           docker run -d -p 80:80 --name woop --network my-network woop
+  html:
+    if : ${{ github.event.inputs.app == 'html' }}
+    runs-on: woop
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: |
+          docker build -t woop .
+          rm -rf /home/opc/nginx/html/woop
+          mkdir -p /home/opc/nginx/html/woop
+          docker cp woop:/usr/share/nginx/html/* /home/opc/nginx/html/woop
 
