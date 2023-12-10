@@ -53,7 +53,7 @@
       </g>
     </svg>
     <div class="about">
-      <a href="https://bytebitter.com/doc.html" target="_blank">?</a>
+      <a href="https://woop.bytebitter.com/doc.html" target="_blank">?</a>
     </div>
     <br />
     <FunctionHub

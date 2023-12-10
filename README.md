@@ -6,7 +6,7 @@ on other platforms.
 So Woop appeared. It helps to process text and expects to cover common usage scenarios.
 Text looks like stream flowing from one function to another and becomes a final output.
 
-Usage view [document](https://bytebitter.com/doc.html).
+Usage view [document](https://woop.bytebitter.com/doc.html).
 
 ## Project setup
 
