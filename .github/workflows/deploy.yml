@@ -38,6 +38,6 @@ jobs:
       - run: |
           docker build -t woop .
           rm -rf /home/opc/nginx/html/woop
-          mkdir -p /home/opc/nginx/html/woop
+          mkdir -p /home/opc/nginx/html
           docker cp woop:/usr/share/nginx/html /home/opc/nginx/html/woop
 
