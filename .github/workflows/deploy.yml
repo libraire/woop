@@ -37,7 +37,7 @@ jobs:
           fetch-depth: 0
       - run: |
           docker build -t woop .
-          rm -rf /home/opc/nginx/html/woop
-          mkdir -p /home/opc/nginx/html
-          docker cp woop:/usr/share/nginx/html /home/opc/nginx/html/woop
+          rm -rf ~/nginx/html/woop
+          mkdir -p ~/nginx/html
+          docker cp woop:/usr/share/nginx/html ~/nginx/html/woop
 
