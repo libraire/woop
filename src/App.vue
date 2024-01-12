@@ -30,7 +30,6 @@
         </filter>
       </defs>
 
-      <!--font Monoton-->
       <g
         id="svgGroup"
         stroke-linecap="round"
@@ -53,15 +52,18 @@
       </g>
     </svg>
     <div class="about">
-      <a href="https://woop.bytebitter.com/doc.html" target="_blank">?</a>
+      <a href="https://woop.bytebush.com/doc.html" target="_blank">document</a>
+      <a href="https://github.com/sponsors/libraire?frequency=recurring&sponsor=drinking" target="_blank">    donation</a>
     </div>
     <br />
     <FunctionHub
       ref="hub"
-      @handlers="handle"
+      @handle="handle"
+      @repeat="repeatable"
       @redirect="redirect"
       @open="openParamArea"
       @close="closeParamArea"
+      @copy="copy"
     />
     <br />
     <div id="editorArea">
@@ -96,6 +98,8 @@ export default {
       operation: function (text) {
         return text;
       },
+      intervalId: null,
+      repeat: false,
     };
   },
   components: {
@@ -104,6 +108,9 @@ export default {
     ParamArea,
   },
   methods: {
+    repeatable(rpt) {
+      this.repeat = rpt;
+    },
     updateArgs(text) {
       this.$refs.hub.updateArgument(text);
       this.output = this.operation(this.editText);
@@ -121,6 +128,16 @@ export default {
       this.output = operation(this.editText);
       let button = document.getElementById("copyButton");
       button.hidden = this.output.length <= 0;
+
+      if (this.repeat) {
+        var that = this;
+        clearInterval(this.intervalId);
+        this.intervalId = setInterval(function () {
+          that.output = operation(that.editText);
+        }, 1000);
+      } else {
+        clearInterval(this.intervalId);
+      }
     },
     copy() {
       navigator.clipboard.writeText(this.output);
@@ -195,19 +212,17 @@ export default {
 }
 
 .about {
-  color: #000;
   margin-left: -10px;
   height: 18px;
   width: 18px;
   display: inline-block;
   vertical-align: 10px;
-  background-color: white;
   border-radius: 9px;
   font-weight: 800;
 }
 
 .about > a {
-  color: #000;
+  color: #ffffff;
 }
 
 svg {

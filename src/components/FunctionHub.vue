@@ -111,7 +111,21 @@ export default {
                 );
       }
 
-      this.$emit("handlers", handler);
+
+      this.$emit("repeat", false);
+      for(var index in this.selectedItems) {
+        console.log(this.selectedItems[index])
+        if(this.selectedItems[index] == "Copy") {
+          this.$emit("copy");
+        }
+
+        if(index == this.selectedItems.length -1) {
+          this.$emit("repeat", this.selectedItems[index] == "Repeat");          
+        }
+
+      }
+
+      this.$emit("handle", handler);
       setTimeout(function () {
         updateColor(selectedItems);
       }, 50);

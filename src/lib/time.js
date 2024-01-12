@@ -1,4 +1,10 @@
 let METHODS = {
+  Time: {
+    func:function() {
+      return Date.now() / 1000;
+    },
+    usage: "Get current timestamp"
+  },
   DateToTimestamp: {
     func: function (text) {
       return Date.parse(text);

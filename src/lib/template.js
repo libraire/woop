@@ -283,7 +283,7 @@ const METHODS = {
         let params = array[i].split(" ");
         let template = argument;
         for (let j = params.length - 1; j >= 0; j--) {
-          template = template.replaceAll("$" + j, params[j]);
+          template = template.replaceAll("$" + j, params[j]).replaceAll("$NO" , 1+i);
         }
         result.push(template);
       }

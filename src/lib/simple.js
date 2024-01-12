@@ -132,6 +132,18 @@ const METHODS = {
     },
     usage: "Decode URI",
   },
+  Copy: {
+    func: function (text) {
+      return text;
+    },
+    usage: "Copy current output",
+  },
+  Repeat: {
+    func: function (text) {
+      return text;
+    },
+    usage: "Repeat former functions",
+  }
 };
 
 export { METHODS };
