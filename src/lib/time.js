@@ -5,16 +5,12 @@ let METHODS = {
     },
     usage: "Convert date format like 2020-01-01 10:10:10 to timestamp",
   },
-  TimestampToDate: {
+  TimestampToISOString: {
     func: function (text) {
       let date = new Date(text * 1000);
-      return (
-        date.toLocaleDateString().replace(/\//g, "-") +
-        " " +
-        date.toTimeString().substr(0, 8)
-      );
+      return date.toISOString();
     },
-    usage: "Convert timestamp to Data format",
+    usage: "Convert timestamp to ISO formated string",
   },
 };
 

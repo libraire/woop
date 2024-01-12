@@ -37,6 +37,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
+          docker image prune -f
           docker build -t woop .
           rm -rf ~/nginx/html/woop
           mkdir -p ~/nginx/html
