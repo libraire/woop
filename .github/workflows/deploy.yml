@@ -38,9 +38,14 @@ jobs:
           fetch-depth: 0
       - run: |
           docker image prune -f
+          containers=$(docker ps -qa --filter "ancestor=woop")
+          if [[ -n "$containers" ]]; then
+            docker rm $containers
+          fi
           docker build -t woop .
           rm -rf ~/nginx/html/woop
           mkdir -p ~/nginx/html
+          docker run -d -p 80:80 --name woop --network my-network woop
           docker cp woop:/usr/share/nginx/html ~/nginx/html/woop
   copy-only:
     if : ${{ github.event.inputs.app == 'copy-only' }}

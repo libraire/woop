@@ -62,7 +62,7 @@ const template = `
 <body>  
 <div class="container">
 <div class="title">
-    <a href="https://bytebitter.com" class="no-link">Woop Document </a>
+    <a href="https://woop.bytegush.com" class="no-link">Woop Document </a>
     <div class="sub-title">
         <a href="https://github.com/libraire/woop" class="no-link">@Github</a> <a href="https://github.com/sponsors/libraire" class="no-link">@Sponsor</a>
     </div>

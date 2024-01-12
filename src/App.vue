@@ -52,7 +52,7 @@
       </g>
     </svg>
     <div class="about">
-      <a href="https://woop.bytebush.com/doc.html" target="_blank">document</a>
+      <a href="https://woop.bytegush.com/doc.html" target="_blank">document</a>
       <a href="https://github.com/sponsors/libraire?frequency=recurring&sponsor=drinking" target="_blank">    donation</a>
     </div>
     <br />
@@ -71,7 +71,6 @@
       <EditArea id="editor" @transfer="update" ref="editor" />
     </div>
     <br />
-    <!-- <code v-html="output" id="output"/> -->
     <code id="output">
       <button id="copyButton" v-on:click="copy" hidden="true">Copy</button>
       {{ output }}

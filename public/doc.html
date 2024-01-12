@@ -4,61 +4,60 @@
 <head>
     <title>Woop Document</title>
     <style>
-        table {
-            border-collapse: collapse;
-        }
+    table {
+      border-collapse: collapse;
+  }
 
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
-        
-        a.no-link {
-           text-decoration: none; /* Removes underline */
-            color: #2b2b2b;
-        }
+  th, td {
+      border: 1px solid black;
+      padding: 8px;
+  }
+  
+  a.no-link {
+     text-decoration: none; /* Removes underline */
+      color: #2b2b2b;
+  }
 
-        a.no-link:hover {
-            color: #b50a0a;
-        }
+  a.no-link:hover {
+      color: #b50a0a;
+  }
 
-        div.title {
-            font-size: 40px;
-            font-weight: bolder;
-            padding-top: 30px;
-            padding-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-        }
+  div.title {
+      font-size: 40px;
+      font-weight: bolder;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+  }
 
-        div.sub-title {
-            font-size: 20px;
-            font-weight: bolder;
-            display: inline;
-            align-self: flex-end;
-        }
+  div.sub-title {
+      font-size: 20px;
+      font-weight: bolder;
+      display: inline;
+      align-self: flex-end;
+  }
 
-        div.container {
-            padding-bottom: 60px;
-        }
+  div.container {
+      padding-bottom: 60px;
+  }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+  body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
     </style>
 </head>
-<body>
-
-    <div class="container">
-    <div class="title">
-        <a href="https://bytebitter.com" class="no-link">Woop Document </a>
-        <div class="sub-title">
-            <a href="https://github.com/libraire/woop" class="no-link">@Github</a> <a href="https://github.com/sponsors/libraire" class="no-link">@Sponsor</a>
-        </div>
-        
+<body>  
+<div class="container">
+<div class="title">
+    <a href="https://woop.bytegush.com" class="no-link">Woop Document </a>
+    <div class="sub-title">
+        <a href="https://github.com/libraire/woop" class="no-link">@Github</a> <a href="https://github.com/sponsors/libraire" class="no-link">@Sponsor</a>
     </div>
+    
+</div>
     <table>
         <tr>
             <th>Function</th>
@@ -162,6 +161,14 @@
         <td>Decode URI</td>
         </tr>
         <tr>
+        <td>Copy</td>
+        <td>Copy current output</td>
+        </tr>
+        <tr>
+        <td>Repeat</td>
+        <td>Repeat former functions</td>
+        </tr>
+        <tr>
         <td>Stringify</td>
         <td>Transform JSON text to string</td>
         </tr>
@@ -178,12 +185,16 @@
         <td>Format JS code</td>
         </tr>
         <tr>
+        <td>Time</td>
+        <td>Get current timestamp</td>
+        </tr>
+        <tr>
         <td>DateToTimestamp</td>
         <td>Convert date format like 2020-01-01 10:10:10 to timestamp</td>
         </tr>
         <tr>
-        <td>TimestampToDate</td>
-        <td>Convert timestamp to Data format</td>
+        <td>TimestampToISOString</td>
+        <td>Convert timestamp to ISO formated string</td>
         </tr>
         <tr>
         <td>SortCharacter</td>
@@ -230,12 +241,24 @@
         <td>Base64 Encode</td>
         </tr>
         <tr>
+        <td>Calculate Text Size</td>
+        <td>Calculates size of text in Bytes</td>
+        </tr>
+        <tr>
         <td>EditDistance</td>
         <td>Count the minimum edit distance of two words</td>
         </tr>
         <tr>
         <td>Echo</td>
         <td>return the same text as input text</td>
+        </tr>
+        <tr>
+        <td>From unicode</td>
+        <td>Returns a readable string from the unicode scaped string (js format)</td>
+        </tr>
+        <tr>
+        <td>HTTP Headers to JSON</td>
+        <td>Converts color-separated HTTP headers to JSON format</td>
         </tr>
         <tr>
         <td>Hex to RGB</td>
@@ -246,23 +269,30 @@
         <td>Merge blank lines into one</td>
         </tr>
         <tr>
-        <td>Generate Password</td>
-        <td>Input the length of the password you want to generate</td>
+        <td>Random Character</td>
+        <td>Generate characters randomly with specific length</td>
+        </tr>
+        <tr>
+        <td>Random Number</td>
+        <td>Current timestamp</td>
         </tr>
         <tr>
         <td>RGB to Hex</td>
         <td>Convert RGB to Hex</td>
         </tr>
         <tr>
-        <td>Write</td>
-        <td>Write the text to cloud and read it with the generated code</td>
+        <td>Title Case</td>
+        <td>Converts Your Text to Title Case (Per Line)</td>
         </tr>
         <tr>
-        <td>Read</td>
-        <td>Read the written text with code, only read once</td>
+        <td>To Unicode</td>
+        <td>Converts a string to Unicode escape chars (JS format)</td>
+        </tr>
+        <tr>
+        <td>Unindent</td>
+        <td>Unindent a block of text</td>
         </tr>
     </table>
-
     </div>
 </body>
 </html>
