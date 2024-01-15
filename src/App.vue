@@ -178,7 +178,8 @@ export default {
 
 .anticon svg {
   color: white;
-  margin-top: 5px;
+  margin-top: 6px;
+  margin-left: 30px;
 }
 
 #editorArea {
@@ -256,7 +257,30 @@ body {
   --color-5: #f1b211;
 }
 
-* {
-  box-sizing: border-box;
+.xxx:after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: -2px;
+  width: 0;
+  height: 0;
+  border-left: 14px solid white;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent; 
+} 
+
+.ant-select-selection__choice:before {
+  content: "";
+  position: absolute;
+  right: -13px;
+  bottom: 0px;
+  width: 0;
+  height: 0;  
+  border-top: 12px solid rgb(255, 255, 255);
+  border-right: 12px solid transparent;
+
+  border-bottom: 12px solid white;
+  border-left: 12px solid transparent;
 }
+
 </style>

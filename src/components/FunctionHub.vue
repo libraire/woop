@@ -6,7 +6,7 @@
     style="width: 100%; margin-top: 30px; max-width: 800px"
     @change="handleChange"
   >
-    <a-select-option v-for="item in filteredOptions" :key="item" :value="item">
+    <a-select-option v-for="item in filteredOptions" :key="item" :value="item" class="pointer">
       {{ item }}
     </a-select-option>
   </a-select>
@@ -16,31 +16,27 @@
 import * as hub from ".././hub.js";
 
 function genSVG(index) {
-  const rainBow = ["EE6352", "F79D84", "FAC05E", "59CD90", "3FA7D6", "454372"];
-  const color = rainBow[index % 6];
-  const svg =
-    '<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path style="fill: #' +
-    color +
-    ';stroke: rgba(0, 0, 0, 0); stroke-opacity: 0;" d="M 0 0 L 470 0 L 500 250 L 470 500 L 0 500 L 25 250 L 0 0 Z"/></svg>';
-  const start =
-    '<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path style="fill: #' +
-    color +
-    '; stroke: rgba(0, 0, 0, 0); stroke-opacity: 0;" d="M 0 0 L 470 0 L 500 250 L 470 500 L 0 500 L 0 250 L 0 0 Z"/></svg>';
-  return index === 0 ? start : svg;
+  const rainBow = ["#EE6352", "#F79D84", "#FAC05E", "#59CD90", "#3FA7D6", "#454372"];
+  return rainBow[index]
 }
 
 function updateColor(items) {
   for (let i = 0; i < items.length; i++) {
     let title = '[title="' + items[i] + '"]';
     document.querySelectorAll(title).forEach((el) => {
-      let svg = genSVG(i);
-      let encoded = window.btoa(svg);
-      el.style.backgroundImage =
-        "url(data:image/svg+xml;base64," + encoded + ")";
-      el.style["background-size"] = "cover";
-      el.style["margin-right"] = 0;
-      el.style["border"] = "0px solid #fff";
+      if(i > 0){
+        el.style["margin-left"] = "-6px";
+        el.classList.add("xxx")
+        el.style["padding-left"]="16px";
+      }
+      el.style["border-radius"] = "0px";
+      el.style["border-width"] = "0px"; 
+      el.style["border-color"] = "#fff"; 
       el.style["color"] = "#fff";
+      el.style["background-color"]=genSVG(i)
+      el.style["z-index"] = 1000-i;
+      el.style["font-weight"]=900;
+      
     });
   }
 }
@@ -145,3 +141,10 @@ export default {
   },
 };
 </script>
+
+
+<style>
+
+
+
+</style>
