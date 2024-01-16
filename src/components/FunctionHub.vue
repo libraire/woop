@@ -6,7 +6,12 @@
     style="width: 100%; margin-top: 30px; max-width: 800px"
     @change="handleChange"
   >
-    <a-select-option v-for="item in filteredOptions" :key="item" :value="item" class="pointer">
+    <a-select-option
+      v-for="item in filteredOptions"
+      :key="item"
+      :value="item"
+      class="pointer"
+    >
       {{ item }}
     </a-select-option>
   </a-select>
@@ -15,28 +20,30 @@
 <script>
 import * as hub from ".././hub.js";
 
-function genSVG(index) {
-  const rainBow = ["#EE6352", "#F79D84", "#FAC05E", "#59CD90", "#3FA7D6", "#454372"];
-  return rainBow[index]
-}
-
 function updateColor(items) {
+  const rainBow = [
+    "#EE6352",
+    "#F79D84",
+    "#FAC05E",
+    "#59CD90",
+    "#3FA7D6",
+    "#454372",
+  ];
   for (let i = 0; i < items.length; i++) {
     let title = '[title="' + items[i] + '"]';
     document.querySelectorAll(title).forEach((el) => {
-      if(i > 0){
+      if (i > 0) {
         el.style["margin-left"] = "-6px";
-        el.classList.add("xxx")
-        el.style["padding-left"]="16px";
+        el.classList.add("xxx");
+        el.style["padding-left"] = "16px";
       }
       el.style["border-radius"] = "0px";
-      el.style["border-width"] = "0px"; 
-      el.style["border-color"] = "#fff"; 
+      el.style["border-width"] = "0px";
+      el.style["border-color"] = "#fff";
       el.style["color"] = "#fff";
-      el.style["background-color"]=genSVG(i)
-      el.style["z-index"] = 1000-i;
-      el.style["font-weight"]=900;
-      
+      el.style["background-color"] = rainBow[i % 6];
+      el.style["z-index"] = 1000 - i;
+      el.style["font-weight"] = 900;
     });
   }
 }
@@ -107,18 +114,16 @@ export default {
                 );
       }
 
-
       this.$emit("repeat", false);
-      for(var index in this.selectedItems) {
-        console.log(this.selectedItems[index])
-        if(this.selectedItems[index] == "Copy") {
+      for (var index in this.selectedItems) {
+        console.log(this.selectedItems[index]);
+        if (this.selectedItems[index] == "Copy") {
           this.$emit("copy");
         }
 
-        if(index == this.selectedItems.length -1) {
-          this.$emit("repeat", this.selectedItems[index] == "Repeat");          
+        if (index == this.selectedItems.length - 1) {
+          this.$emit("repeat", this.selectedItems[index] == "Repeat");
         }
-
       }
 
       this.$emit("handle", handler);
@@ -141,10 +146,3 @@ export default {
   },
 };
 </script>
-
-
-<style>
-
-
-
-</style>

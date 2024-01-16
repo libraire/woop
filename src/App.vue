@@ -257,6 +257,7 @@ body {
   --color-5: #f1b211;
 }
 
+/* Dynamiclly added to selected li */
 .xxx:after {
   content: "";
   position: absolute;
@@ -266,8 +267,8 @@ body {
   height: 0;
   border-left: 14px solid white;
   border-top: 14px solid transparent;
-  border-bottom: 14px solid transparent; 
-} 
+  border-bottom: 14px solid transparent;
+}
 
 .ant-select-selection__choice:before {
   content: "";
@@ -275,12 +276,11 @@ body {
   right: -13px;
   bottom: 0px;
   width: 0;
-  height: 0;  
+  height: 0;
   border-top: 12px solid rgb(255, 255, 255);
   border-right: 12px solid transparent;
 
   border-bottom: 12px solid white;
   border-left: 12px solid transparent;
 }
-
 </style>
