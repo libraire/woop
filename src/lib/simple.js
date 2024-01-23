@@ -143,7 +143,7 @@ const METHODS = {
       return text;
     },
     usage: "Repeat former functions",
-  }
+  },
 };
 
 export { METHODS };

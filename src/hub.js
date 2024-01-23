@@ -2,6 +2,7 @@ import { METHODS as pickerFunc } from "./lib/picker.js";
 import { METHODS as simpleFunc } from "./lib/simple.js";
 import { METHODS as jsonFunc } from "./lib/formatter.js";
 import { METHODS as timeFunc } from "./lib/time.js";
+import { METHODS as xtimeFunc } from "./lib/xtime.js";
 import { METHODS as listFunc } from "./lib/list.js";
 import { METHODS as templateFunc } from "./lib/template.js";
 import { METHODS as csFunc } from "./lib/cheat-sheet.js";
@@ -141,6 +142,7 @@ function loadFunctions() {
     templateFunc,
     csFunc,
     autoFuc,
+    xtimeFunc,
   );
   return Object.keys(hub);
 }

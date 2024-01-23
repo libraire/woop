@@ -115,15 +115,28 @@ export default {
       }
 
       this.$emit("repeat", false);
+      var repeatCounter = 1;
       for (var index in this.selectedItems) {
-        console.log(this.selectedItems[index]);
         if (this.selectedItems[index] == "Copy") {
           this.$emit("copy");
         }
 
-        if (index == this.selectedItems.length - 1) {
-          this.$emit("repeat", this.selectedItems[index] == "Repeat");
+        if (this.selectedItems[index] == "FullScreen") {
+          this.$emit("expand");
         }
+
+        if (this.selectedItems[index] == "Repeat") {
+          this.$emit("repeat", true);
+        }
+
+        const matchX = this.selectedItems[index].match(/^X([1-9]|10)$/);
+        if (matchX) {
+          repeatCounter = repeatCounter * parseInt(matchX[1], 10);
+        }
+      }
+
+      if (repeatCounter > 1) {
+        this.$emit("repeatCounter", repeatCounter);
       }
 
       this.$emit("handle", handler);

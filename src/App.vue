@@ -28,21 +28,34 @@
     <FunctionHub
       ref="hub"
       @handle="handle"
-      @repeat="repeatable"
+      @repeat="setRepeat"
       @redirect="redirect"
       @open="openParamArea"
       @close="closeParamArea"
       @copy="copy"
+      @repeatCounter="setRepeatCounter"
+      @expand="expand"
     />
     <div id="editorArea">
       <ParamArea id="param" @transfer="updateArgs" ref="paramter" />
       <EditArea id="editor" @transfer="update" ref="editor" />
     </div>
-    <br />
+    <div id="buttonContainer" class="buttonContainer" hidden="true">
+      <button id="copyButton" class="button" v-on:click="copy">Copy</button>
+      <button id="expandButton" class="button" v-on:click="expand">
+        Full Screen
+      </button>
+    </div>
+
     <code id="output">
-      <button id="copyButton" v-on:click="copy" hidden="true">Copy</button>
       {{ output }}
     </code>
+
+    <div id="fs" class="fullscreen" v-on:click="shrink">
+      <div class="fullScreenText">
+        {{ output }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -67,6 +80,7 @@ export default {
       },
       intervalId: null,
       repeat: false,
+      repeatCounter: -1,
     };
   },
   components: {
@@ -75,32 +89,43 @@ export default {
     ParamArea,
   },
   methods: {
-    repeatable(rpt) {
+    setRepeat(rpt) {
       this.repeat = rpt;
+    },
+    setRepeatCounter(count) {
+      this.repeatCounter = count;
     },
     updateArgs(text) {
       this.$refs.hub.updateArgument(text);
       this.output = this.operation(this.editText);
-      let button = document.getElementById("copyButton");
+      let button = document.getElementById("buttonContainer");
       button.hidden = this.output.length <= 0;
     },
     update(text) {
       this.editText = text;
       this.output = this.operation(text);
-      let button = document.getElementById("copyButton");
+      let button = document.getElementById("buttonContainer");
       button.hidden = this.output.length <= 0;
     },
     handle(operation) {
       this.operation = operation;
       this.output = operation(this.editText);
-      let button = document.getElementById("copyButton");
+      let button = document.getElementById("buttonContainer");
       button.hidden = this.output.length <= 0;
-
       if (this.repeat) {
         var that = this;
         clearInterval(this.intervalId);
         this.intervalId = setInterval(function () {
+          if (that.repeatCounter == 0) {
+            that.repeatCounter = -1;
+            clearInterval(that.intervalId);
+            return;
+          }
+
           that.output = operation(that.editText);
+          if (that.repeatCounter > 0) {
+            that.repeatCounter--;
+          }
         }, 1000);
       } else {
         clearInterval(this.intervalId);
@@ -128,6 +153,12 @@ export default {
       document.getElementById("param").setAttribute("style", "display:none;");
       document.getElementById("editor").setAttribute("style", "width:100%;");
       this.$refs.paramter.clear();
+    },
+    expand() {
+      document.getElementById("fs").setAttribute("style", "display:flex");
+    },
+    shrink() {
+      document.getElementById("fs").setAttribute("style", "display:none");
     },
   },
 };
@@ -235,13 +266,6 @@ export default {
   font-size: 1.2rem;
 }
 
-#copyButton {
-  float: right;
-  border: 0;
-  background: 0;
-  margin-top: -30px;
-}
-
 body {
   width: 100%;
   display: flex;
@@ -282,5 +306,61 @@ body {
 
   border-bottom: 12px solid white;
   border-left: 12px solid transparent;
+}
+
+.fullscreen {
+  display: none;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #121212;
+  color: white;
+  position: absolute;
+  text-align: center;
+  z-index: 9999;
+  align-items: center;
+}
+
+.fullScreenText {
+  color: transparent;
+  font-size: 7rem;
+  position: relative;
+  margin-top: -30%;
+  background: linear-gradient(
+    220deg,
+    var(--color-1) 19%,
+    transparent 19%,
+    transparent 20%,
+    var(--color-2) 20%,
+    var(--color-2) 39%,
+    transparent 39%,
+    transparent 40%,
+    var(--color-3) 40%,
+    var(--color-3) 59%,
+    transparent 59%,
+    transparent 60%,
+    var(--color-4) 60%,
+    var(--color-4) 79%,
+    transparent 79%,
+    transparent 79%,
+    var(--color-5) 80%
+  );
+  -webkit-background-clip: text;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.button {
+  color: white;
+  background-color: transparent;
+  border-width: 1px;
+  border-color: white;
+  border-radius: 4px;
+  margin: 4px;
 }
 </style>

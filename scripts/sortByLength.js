@@ -1,5 +1,3 @@
-
-
 /**
  * name: Sort By Text Length
  * usage: Sort By Text Length
