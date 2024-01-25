@@ -9,6 +9,7 @@
     "pritter": "npx prettier . --write"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.1.2",
     "ant-design-vue": "^1.7.8",
     "core-js": "^3.6.5",
     "mustache": "^4.2.0",
