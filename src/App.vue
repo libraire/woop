@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div class="about">
-      <a href="https://woop.bytegush.com/doc.html" target="_blank">document</a>
-      <a href="https://github.com/libraire/woop" target="_blank">source</a>
+      <a href="https://woop.bytegush.com/doc.html" target="_blank">How to Use?</a>
+      <a href="https://feedback.bytegush.com/" target="_blank">Feedback</a>
       <a
         href="https://github.com/sponsors/libraire?frequency=recurring&sponsor=drinking"
         target="_blank"
       >
-        sponsor</a
+        Sponsor</a
       >
     </div>
     <div class="woop">WOOP</div>

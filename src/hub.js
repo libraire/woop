@@ -25,8 +25,13 @@ const template = `
   }
   
   a.no-link {
-     text-decoration: none; /* Removes underline */
-      color: #2b2b2b;
+    text-decoration: none; /* Removes underline */
+    color: #cf5454;
+  }
+  
+  a.no-link2 {
+    text-decoration: none; /* Removes underline */
+    color: #2b2b2b;
   }
 
   a.no-link:hover {
@@ -63,9 +68,9 @@ const template = `
 <body>  
 <div class="container">
 <div class="title">
-    <a href="https://woop.bytegush.com" class="no-link">Woop Document </a>
+    <a href="https://woop.bytegush.com" class="no-link2">Woop Document </a>
     <div class="sub-title">
-        <a href="https://github.com/libraire/woop" class="no-link">@Github</a> <a href="https://github.com/sponsors/libraire" class="no-link">@Sponsor</a>
+        Demo on <a href="https://youtu.be/LewQWxf9prI" class="no-link">@Youbute</a> <a href="https://www.bilibili.com/video/BV1zk4y1U73K/?vd_source=8e42221f09f89c66bf48ff1c86aba4a7" class="no-link">@Bilibili</a> <a href="https://github.com/libraire/woop" class="no-link">@Github</a>
     </div>
     
 </div>
