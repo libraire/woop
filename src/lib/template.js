@@ -279,11 +279,32 @@ const METHODS = {
     func: function (text, argument) {
       let array = text.split("\n");
       let result = [];
+
+      // custom separator $[separator][number]
+      const pattern = /\$.[0-9]/g;
       for (let i = 0; i < array.length; i++) {
-        let params = array[i].split(" ");
+
         let template = argument;
-        for (let j = params.length - 1; j >= 0; j--) {
-          template = template.replaceAll("$" + j, params[j]).replaceAll("$NO" , 1+i);
+        let line = array[i]
+      
+        if(pattern.test(template)) {
+          const matches = template.match(pattern);
+          for (let index = 0; index < matches.length; index++) {
+            const element = matches[index];
+            const seperator = element[1]
+            let params = line.split(seperator)
+            console.log(params)
+            for (let j = params.length; j >= 1; j--) {
+              template = template.replaceAll("$" + seperator + j , params[j-1]);
+            }  
+          }
+        }
+
+        // default split by space
+        let params = array[i].split(" ");
+        for (let j = params.length; j >= 1; j--) {
+          template = template.replaceAll("$0" , array[i]);
+          template = template.replaceAll("$" + j, params[j-1]).replaceAll("$NO" , 1+i);
         }
         result.push(template);
       }
@@ -291,7 +312,7 @@ const METHODS = {
       return result.join("\n");
     },
     usage:
-      "params: write template in the first line and $i represent the ith column like $0 + $1 = $2 which will generate a equation sentense.",
+      "params: write template in the first line and $i represent the ith column like $1 + $2 = $3 which will generate a equation sentense.",
     argument: true,
   },
   SQLTableColumns: {
@@ -304,6 +325,22 @@ const METHODS = {
         .join("\n");
     },
     usage: "Extract column info from SQL schema",
+  },
+  JSONArrayPicker: {
+    func: function (text, argument) {
+      const jsonArray = JSON.parse(text);
+      console.log(jsonArray)
+      let keys = argument.split(" ")
+
+      return jsonArray.map((item)=>{
+        return keys.map((key)=>{
+          return item[key] 
+        }).join(" ")
+      }).join("\n")
+    },
+    usage:
+      "params: Input the key of a json object in a json array",
+    argument: true,
   },
 };
 
